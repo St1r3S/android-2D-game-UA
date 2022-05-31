@@ -1,35 +1,44 @@
 package com.example.android_2d_game_ua
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_login.view.tv_register
 
-class LoginActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+class LoginFragment : Fragment() {
 
-        tv_register.setOnClickListener {
-            startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
+        // Inflate the layout for this fragment
+
+        val view = inflater.inflate(R.layout.fragment_login, container, false)
+        view.tv_register.setOnClickListener {
+            Navigation.findNavController(view)
+                .navigate(R.id.action_loginFragment_to_registrationFragment)
         }
 
-        btn_login.setOnClickListener {
+        view.findViewById<Button>(R.id.btn_login).setOnClickListener {
             when {
                 TextUtils.isEmpty(et_login_email.text.toString().trim { it <= ' ' }) -> {
                     Toast.makeText(
-                        this@LoginActivity,
+                        context,
                         "Please enter email!",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
                 TextUtils.isEmpty(et_login_password.text.toString().trim { it <= ' ' }) -> {
                     Toast.makeText(
-                        this@LoginActivity,
+                        context,
                         "Please enter password!",
                         Toast.LENGTH_SHORT
                     ).show()
@@ -42,29 +51,15 @@ class LoginActivity : AppCompatActivity() {
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 Toast.makeText(
-                                    this@LoginActivity,
+                                    context,
                                     "You were logged in successfully!",
                                     Toast.LENGTH_SHORT
                                 ).show()
-
-                                val intent =
-                                    Intent(this@LoginActivity, MainActivity::class.java)
-                                intent.flags =
-                                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                intent.putExtra(
-                                    "user_id",
-                                    FirebaseAuth.getInstance().currentUser!!.uid
-                                )
-                                intent.putExtra(
-                                    "username_id",
-                                    FirebaseAuth.getInstance().currentUser!!.displayName
-                                )
-                                intent.putExtra("email_id", email)
-                                startActivity(intent)
-                                finish()
+                                Navigation.findNavController(view)
+                                    .navigate(R.id.action_loginFragment_to_menuFragment)
                             } else {
                                 Toast.makeText(
-                                    this@LoginActivity,
+                                    context,
                                     task.exception!!.message.toString(),
                                     Toast.LENGTH_SHORT
                                 ).show()
@@ -72,6 +67,11 @@ class LoginActivity : AppCompatActivity() {
                         }
                 }
             }
+
         }
+
+
+        return view
+
     }
 }

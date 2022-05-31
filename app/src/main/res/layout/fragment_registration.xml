@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".RegistrationFragment">
 
     <FrameLayout
         android:id="@+id/f1_header_image"
@@ -40,7 +40,6 @@
         android:scaleType="fitXY"
         android:src="@drawable/space"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/f1_header_image" />
 
@@ -72,7 +71,7 @@
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login"
+        android:text="@string/register"
         android:textColor="#F3F3F3"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -81,7 +80,27 @@
         app:layout_constraintTop_toBottomOf="@id/f1_header_image" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_login_email"
+        android:id="@+id/til_register_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+        <EditText
+            android:id="@+id/et_register_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            tools:text="Ryan_Gosling322" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_register_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -90,10 +109,10 @@
         android:hint="@string/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title">
+        app:layout_constraintTop_toBottomOf="@id/til_register_username">
 
         <EditText
-            android:id="@+id/et_login_email"
+            android:id="@+id/et_register_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
@@ -101,7 +120,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_login_password"
+        android:id="@+id/til_register_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -110,10 +129,10 @@
         android:hint="@string/password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_login_email">
+        app:layout_constraintTop_toBottomOf="@id/til_register_email">
 
         <EditText
-            android:id="@+id/et_login_password"
+            android:id="@+id/et_register_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -121,7 +140,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -131,13 +150,13 @@
         android:background="@color/colorAccent"
         android:foreground="?attr/selectableItemBackground"
         android:gravity="center"
-        android:text="@string/login"
+        android:text="@string/register"
         android:textColor="#F3F3F3"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_login_password" />
+        app:layout_constraintTop_toBottomOf="@+id/til_register_password" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -147,26 +166,26 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_login">
+        app:layout_constraintTop_toBottomOf="@id/btn_register">
 
         <TextView
-            android:id="@+id/tv_don_t_have_an_account"
+            android:id="@+id/tv_already_have_an_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:padding="5dp"
-            android:textColor="#F3F3F3"
-            android:text="@string/don_t_have_an_account" />
+            android:text="@string/already_have_an_account"
+            android:textColor="#F3F3F3" />
 
         <TextView
-            android:id="@+id/tv_register"
+            android:id="@+id/tv_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:foreground="?attr/selectableItemBackground"
             android:padding="5dp"
+            android:text="@string/login"
             android:textColor="#F3F3F3"
-            android:text="@string/register"
             android:textStyle="bold" />
     </LinearLayout>
 

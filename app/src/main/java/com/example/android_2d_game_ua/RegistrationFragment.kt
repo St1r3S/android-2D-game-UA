@@ -1,43 +1,51 @@
 package com.example.android_2d_game_ua
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
-import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.fragment_registration.*
+import kotlinx.android.synthetic.main.fragment_registration.view.*
 
+class RegistrationFragment : Fragment() {
 
-class RegisterActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
-
-        tv_login.setOnClickListener {
-            onBackPressed()
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
+        // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.fragment_registration, container, false)
+        view.tv_login.setOnClickListener {
+            Navigation.findNavController(view)
+                .navigate(R.id.action_registrationFragment_to_loginFragment)
         }
-        btn_register.setOnClickListener {
+        view.findViewById<Button>(R.id.btn_register).setOnClickListener {
             when {
                 TextUtils.isEmpty(et_register_username.text.toString().trim { it <= ' ' }) -> {
                     Toast.makeText(
-                        this@RegisterActivity,
+                        context,
                         "Please enter username!",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
                 TextUtils.isEmpty(et_register_email.text.toString().trim { it <= ' ' }) -> {
                     Toast.makeText(
-                        this@RegisterActivity,
+                        context,
                         "Please enter email!",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
                 TextUtils.isEmpty(et_register_password.text.toString().trim { it <= ' ' }) -> {
                     Toast.makeText(
-                        this@RegisterActivity,
+                        context,
                         "Please enter password!",
                         Toast.LENGTH_SHORT
                     ).show()
@@ -56,33 +64,25 @@ class RegisterActivity : AppCompatActivity() {
                                         .build()
                                 )
                                 Toast.makeText(
-                                    this@RegisterActivity,
+                                    context,
                                     "You were registered successfully!",
                                     Toast.LENGTH_SHORT
                                 ).show()
+                                Navigation.findNavController(view)
+                                    .navigate(R.id.action_registrationFragment_to_menuFragment)
 
-                                val intent =
-                                    Intent(this@RegisterActivity, MainActivity::class.java)
-                                intent.flags =
-                                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                intent.putExtra("user_id", firebaseUser.uid)
-                                intent.putExtra("username_id", username)
-                                intent.putExtra("email_id", email)
-                                startActivity(intent)
-                                finish()
                             } else {
                                 Toast.makeText(
-                                    this@RegisterActivity,
+                                    context,
                                     task.exception!!.message.toString(),
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
                         }
                 }
+
             }
         }
-
+        return view
     }
-
-
 }
