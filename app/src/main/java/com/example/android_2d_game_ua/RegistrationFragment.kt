@@ -12,6 +12,9 @@ import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_registration.*
 import kotlinx.android.synthetic.main.fragment_registration.view.*
 
@@ -63,6 +66,11 @@ class RegistrationFragment : Fragment() {
                                     UserProfileChangeRequest.Builder().setDisplayName(username)
                                         .build()
                                 )
+                                val user = User(firebaseUser.uid, username, email, password, 0)
+                                val database: DatabaseReference =
+                                    Firebase.database("https://android-2d-game-ua-ff466-default-rtdb.europe-west1.firebasedatabase.app/").reference
+                                database.child("Users").child(firebaseUser.uid).setValue(user)
+
                                 Toast.makeText(
                                     context,
                                     "You were registered successfully!",
