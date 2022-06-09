@@ -12,7 +12,7 @@ class UserRepository {
         return database.child("Users").child(uid)
     }
 
-    fun setScore(uid: String, score: Int) {
+    fun setScore(uid: String, score: Long) {
         database.child("Users").child(uid).child("score").setValue(score)
     }
 }
