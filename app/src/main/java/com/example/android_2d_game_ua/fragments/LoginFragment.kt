@@ -1,4 +1,4 @@
-package com.example.android_2d_game_ua
+package com.example.android_2d_game_ua.fragments
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.navigation.Navigation
+import com.example.android_2d_game_ua.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.tv_register
@@ -69,9 +70,6 @@ class LoginFragment : Fragment() {
             }
 
         }
-
-
         return view
-
     }
 }
