@@ -1,12 +1,14 @@
-package com.example.android_2d_game_ua
+package com.example.android_2d_game_ua.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.Navigation
+import com.example.android_2d_game_ua.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -31,7 +33,7 @@ class GameFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_game, container, false)
         val currentUser = auth.currentUser
-        var userScore: Long = 0L
+        var userScore = 0L
         if (currentUser == null) {
             Navigation.findNavController(view)
                 .navigate(R.id.action_gameFragment_to_loginFragment)
@@ -48,7 +50,7 @@ class GameFragment : Fragment() {
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
+                    Log.e("DataBase Error", error.message)
                 }
             })
             view.findViewById<Button>(R.id.tv_btn_increment).setOnClickListener {
@@ -61,10 +63,8 @@ class GameFragment : Fragment() {
                 }
                 defaultScore = 0
                 view.tv_current_score.text = defaultScore.toString()
-
             }
         }
         return view
     }
-
 }

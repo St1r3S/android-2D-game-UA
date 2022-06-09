@@ -1,4 +1,4 @@
-package com.example.android_2d_game_ua
+package com.example.android_2d_game_ua.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,15 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.Navigation
+import com.example.android_2d_game_ua.R
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.fragment_registration.view.*
 
 class MenuFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

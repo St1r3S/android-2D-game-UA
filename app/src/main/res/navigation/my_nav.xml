@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.android_2d_game_ua.LoginFragment"
+        android:name="com.example.android_2d_game_ua.fragments.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.example.android_2d_game_ua.RegistrationFragment"
+        android:name="com.example.android_2d_game_ua.fragments.RegistrationFragment"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.android_2d_game_ua.ProfileFragment"
+        android:name="com.example.android_2d_game_ua.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <argument
@@ -47,7 +47,7 @@
     </fragment>
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.example.android_2d_game_ua.MenuFragment"
+        android:name="com.example.android_2d_game_ua.fragments.MenuFragment"
         android:label="fragment_menu"
         tools:layout="@layout/fragment_menu" >
         <action
@@ -65,7 +65,7 @@
     </fragment>
     <fragment
         android:id="@+id/leaderboardFragment"
-        android:name="com.example.android_2d_game_ua.LeaderboardFragment"
+        android:name="com.example.android_2d_game_ua.fragments.LeaderboardFragment"
         android:label="fragment_leaderboard"
         tools:layout="@layout/fragment_leaderboard" >
         <action
@@ -74,7 +74,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
-        android:name="com.example.android_2d_game_ua.GameFragment"
+        android:name="com.example.android_2d_game_ua.fragments.GameFragment"
         android:label="fragment_game"
         tools:layout="@layout/fragment_game" >
         <action

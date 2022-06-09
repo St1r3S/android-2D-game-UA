@@ -1,4 +1,4 @@
-package com.example.android_2d_game_ua
+package com.example.android_2d_game_ua.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.android_2d_game_ua.model.leaderboard.LeaderBoardElem
+import com.example.android_2d_game_ua.R
 
 class LeaderboardAdapter(
     private val inflater: LayoutInflater,
@@ -42,20 +44,14 @@ class LeaderboardAdapter(
             oldItem: LeaderBoardElem,
             newItem: LeaderBoardElem
         ): Boolean {
-
-            val res = oldItem == newItem
-
-            return res
+            return oldItem == newItem
         }
 
         override fun areContentsTheSame(
             oldItem: LeaderBoardElem,
             newItem: LeaderBoardElem
         ): Boolean {
-
-            val res = oldItem.name == newItem.name && oldItem.score == newItem.score
-
-            return res
+            return oldItem.name == newItem.name && oldItem.score == newItem.score
         }
     }
 }
