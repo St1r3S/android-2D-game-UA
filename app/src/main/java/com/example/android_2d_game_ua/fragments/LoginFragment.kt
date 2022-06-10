@@ -28,7 +28,6 @@ class LoginFragment : Fragment() {
             this,
             AuthViewModelFactory()
         ).get(AuthViewModel::class.java)
-        // Inflate the layout for this fragment
 
         val view = inflater.inflate(R.layout.fragment_login, container, false)
         view.tv_register.setOnClickListener {

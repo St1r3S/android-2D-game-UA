@@ -4,83 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/space2"
     tools:context=".fragments.LoginFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-
-    <FrameLayout
-        android:id="@+id/f1_header_image"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="image"
-            android:scaleType="fitXY"
-            android:src="@drawable/space" />
-
-        <ImageView
-            android:layout_width="220dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:contentDescription="@string/app_name"
-            android:scaleType="fitCenter"
-            android:src="@drawable/flappy_bird_logo" />
-    </FrameLayout>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:contentDescription="image"
-        android:rotation="180"
-        android:rotationY="180"
-        android:scaleType="fitXY"
-        android:src="@drawable/space"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/f1_header_image" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:contentDescription="image"
-        android:scaleType="fitXY"
-        android:src="@drawable/space"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:contentDescription="image"
-        android:rotation="180"
-        android:rotationY="180"
-        android:scaleType="fitXY"
-        android:src="@drawable/space"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
         android:text="@string/login"
         android:textColor="#F3F3F3"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/f1_header_image" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_login_email"
@@ -157,8 +95,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:padding="5dp"
-            android:textColor="#F3F3F3"
-            android:text="@string/don_t_have_an_account" />
+            android:text="@string/don_t_have_an_account"
+            android:textColor="#F3F3F3" />
 
         <TextView
             android:id="@+id/tv_register"
@@ -167,10 +105,23 @@
             android:layout_marginTop="16dp"
             android:foreground="?attr/selectableItemBackground"
             android:padding="5dp"
-            android:textColor="#F3F3F3"
             android:text="@string/register"
+            android:textColor="#F3F3F3"
             android:textStyle="bold" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/game_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/game_name"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,9 +7,19 @@
     <string name="register">REGISTER</string>
     <string name="username">Username</string>
     <string name="already_have_an_account">Already have an account?</string>
-    <string name="profile">PROFILE</string>
+    <string name="profile">Your profile</string>
     <string name="logout">Logout</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">0</string>
+    <string name="username_word">Username:</string>
+    <string name="email_word">Email:</string>
+    <string name="best_score_word">Best score:</string>
+    <string name="name">Name</string>
+    <string name="score">Score</string>
+    <string name="score_value">, score:</string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="game_name">Game Project</string>
+    <string name="play_game">Play game</string>
+    <string name="main_menu">Main menu</string>
 
 </resources>
