@@ -8,7 +8,7 @@ class AuthViewModel : ViewModel() {
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     var check: MutableLiveData<Boolean> = MutableLiveData()
 
-    fun loginUser( email: String, password: String) {
+    fun loginUser(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -18,5 +18,9 @@ class AuthViewModel : ViewModel() {
                 }
             }
 
+    }
+
+    fun logoutUser() {
+        auth.signOut()
     }
 }

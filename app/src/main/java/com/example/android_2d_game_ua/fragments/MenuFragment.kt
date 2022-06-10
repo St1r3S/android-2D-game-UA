@@ -6,20 +6,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.android_2d_game_ua.R
+import com.example.android_2d_game_ua.view_models.AuthViewModel
+import com.example.android_2d_game_ua.view_models.factories.AuthViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
 
 class MenuFragment : Fragment() {
+    private lateinit var viewModel: AuthViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
+        viewModel = ViewModelProvider(
+            this,
+            AuthViewModelFactory()
+        ).get(AuthViewModel::class.java)
+
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_menu, container, false)
         view.findViewById<Button>(R.id.button_logout).setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
+            viewModel.logoutUser()
             Navigation.findNavController(view)
                 .navigate(R.id.action_menuFragment_to_loginFragment)
         }
