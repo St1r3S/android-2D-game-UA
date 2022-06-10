@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_leaderboard.view.*
 class LeaderboardFragment : Fragment() {
 
     private var list: MutableList<LeaderBoardElem> = mutableListOf()
-    lateinit var viewModel: LeaderboardViewModel
+    private lateinit var viewModel: LeaderboardViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

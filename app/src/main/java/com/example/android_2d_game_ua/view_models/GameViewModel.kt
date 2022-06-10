@@ -15,7 +15,7 @@ import com.google.firebase.database.ValueEventListener
 class GameViewModel(private val repository: UserRepository) : ViewModel() {
 
     var user: MutableLiveData<User> = MutableLiveData()
-    lateinit var viewModel: MenuViewModel
+    private lateinit var viewModel: MenuViewModel
 
     fun getUser(fragment: Fragment) {
         viewModel = ViewModelProvider(

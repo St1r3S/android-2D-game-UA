@@ -1,5 +1,6 @@
 package com.example.android_2d_game_ua.repositories
 
+import com.example.android_2d_game_ua.model.user.User
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -14,5 +15,9 @@ class UserRepository {
 
     fun setScore(uid: String, score: Long) {
         database.child("Users").child(uid).child("score").setValue(score)
+    }
+
+    fun createUser(user: User) {
+        database.child("Users").child(user.userId.toString()).setValue(user)
     }
 }

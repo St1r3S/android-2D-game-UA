@@ -14,7 +14,7 @@ import com.example.android_2d_game_ua.view_models.factories.GameViewModelFactory
 import kotlinx.android.synthetic.main.fragment_game.view.*
 
 class GameFragment : Fragment() {
-    lateinit var viewModel: GameViewModel
+    private lateinit var viewModel: GameViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
