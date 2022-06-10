@@ -25,7 +25,6 @@ class MenuFragment : Fragment() {
             AuthViewModelFactory()
         ).get(AuthViewModel::class.java)
 
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_menu, container, false)
         view.findViewById<Button>(R.id.button_logout).setOnClickListener {
             viewModel.logoutUser()

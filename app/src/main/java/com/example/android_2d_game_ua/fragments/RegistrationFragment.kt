@@ -29,7 +29,7 @@ class RegistrationFragment : Fragment() {
             this,
             RegistrationViewModelFactory(UserRepository())
         ).get(RegistrationViewModel::class.java)
-        // Inflate the layout for this fragment
+
         val view = inflater.inflate(R.layout.fragment_registration, container, false)
         view.tv_login.setOnClickListener {
             Navigation.findNavController(view)

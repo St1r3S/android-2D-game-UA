@@ -35,10 +35,9 @@ class ProfileFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
         viewModelProfile.getUser(viewModelMenu)
         viewModelProfile.user.observe(viewLifecycleOwner) {
-            view.tv_score.text = "User SCORE :: ${it.score}"
-            view.tv_user_id.text = "User ID :: ${it.userId}"
-            view.tv_username_id.text = "Username :: ${it.username}"
-            view.tv_email_id.text = "Email :: ${it.email}"
+            view.tv_score.text = "${it.score}"
+            view.tv_username_id.text = "${it.username}"
+            view.tv_email_id.text = "${it.email}"
         }
 
         return view
