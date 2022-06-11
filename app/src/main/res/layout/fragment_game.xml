@@ -17,7 +17,7 @@
         android:textColor="#FF0000"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/circleConstr"
-        app:layout_constraintStart_toEndOf="@+id/textView7" />
+        app:layout_constraintStart_toEndOf="@+id/textView" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/circleConstr"
@@ -93,7 +93,6 @@
         </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <TextView
         android:id="@+id/tv_best_score"
         android:layout_width="wrap_content"
@@ -107,12 +106,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="16dp"
-        android:text="Current score:"
+        android:text="@string/current_score"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/circleConstr"
@@ -128,7 +127,7 @@
         android:layout_marginEnd="15dp"
         android:alpha="0.9"
         android:backgroundTint="#CC150EE6"
-        android:text="Back to menu"
+        android:text="@string/back_to_menu"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -152,10 +151,10 @@
         android:layout_height="0dp"
         android:layout_marginBottom="5dp"
         android:paddingHorizontal="20dp"
-        android:text="Click on the circle when it's yellow to get 100 points. If you click on blue, you lose!"
+        android:text="@string/game_rules"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent" />
@@ -166,7 +165,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:fontFamily="@font/alfa_slab_one"
-        android:text="Test your reaction speed!"
+        android:text="@string/game_goal"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/textView9"

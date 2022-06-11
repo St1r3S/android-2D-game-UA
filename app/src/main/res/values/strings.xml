@@ -9,7 +9,6 @@
     <string name="already_have_an_account">Already have an account?</string>
     <string name="profile">Your profile</string>
     <string name="logout">Logout</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">0</string>
     <string name="username_word">Username:</string>
     <string name="email_word">Email:</string>
@@ -23,5 +22,11 @@
     <string name="main_menu">Main menu</string>
     <string name="start_game">Start game</string>
     <string name="best_score">0</string>
+    <string name="current_score">Current score:</string>
+    <string name="back_to_menu">Back to menu</string>
+    <string name="game_rules">Click on the circle when it\'s yellow to get 100 points. If you click on blue, you lose!</string>
+    <string name="game_goal">Test your reaction speed!</string>
+    <string name="click">Click, NOW</string>
+    <string name="do_not_click">Don\'t click</string>
 
 </resources>

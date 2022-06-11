@@ -46,7 +46,6 @@ class MenuFragment : Fragment() {
             Navigation.findNavController(view)
                 .navigate(R.id.action_menuFragment_to_profileFragment)
         }
-
         return view
     }
 }
