@@ -22,6 +22,6 @@
     <string name="play_game">Play game</string>
     <string name="main_menu">Main menu</string>
     <string name="start_game">Start game</string>
-    <string name="best_score">BEST SCORE</string>
+    <string name="best_score">0</string>
 
 </resources>

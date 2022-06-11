@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
 import com.example.android_2d_game_ua.R
 import com.example.android_2d_game_ua.repositories.UserRepository
 import com.example.android_2d_game_ua.view_models.GameViewModel
@@ -31,10 +33,15 @@ class GameFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         val view = inflater.inflate(R.layout.fragment_game, container, false)
-        val circleCard = view.findViewById<CardView>(R.id.circleCard)
-        val circleStart = view.findViewById<CardView>(R.id.circleStart)
+        val circleCard = view.circleCard
+        val circleStart = view.circleStart
+        view.button_to_menu.setOnClickListener {
+            Navigation.findNavController(view)
+                .navigate(R.id.action_gameFragment_to_menuFragment)
+        }
 
         var defaultScore = 0L
+
         viewModel = ViewModelProvider(
             this,
             GameViewModelFactory(UserRepository())
@@ -42,7 +49,7 @@ class GameFragment : Fragment() {
 
         viewModel.getUser(this)
         viewModel.user.observe(viewLifecycleOwner) {
-            view.tv_best_score.text = "Best score: ${it.score}"
+            view.tv_best_score.text = "${it.score}"
             val currentUserScore = it.score
             val currentUserUID = it.userId
 
@@ -96,7 +103,6 @@ class GameFragment : Fragment() {
                                 }
                                 defaultScore = 0
                                 view.tv_current_score.text = defaultScore.toString()
-                                loop = false
                                 circleStart.visibility = View.VISIBLE
                                 circleCard.visibility = View.GONE
                             }
