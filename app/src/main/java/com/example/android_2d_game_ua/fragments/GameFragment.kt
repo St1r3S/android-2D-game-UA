@@ -4,11 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
@@ -68,7 +65,7 @@ class GameFragment : Fragment() {
                         when (Random.nextBoolean()) {
                             true -> {
                                 circleCard.setCardBackgroundColor(backgroundColorToLose)
-                                view.score_btn_1.text = "Don't click"
+                                view.score_btn_1.text = getString(R.string.do_not_click)
                                 delay(
                                     TimeUnit.MILLISECONDS.toMillis(
                                         Random.nextLong(
@@ -80,7 +77,7 @@ class GameFragment : Fragment() {
                             }
                             false -> {
                                 circleCard.setCardBackgroundColor(backgroundColorToWin)
-                                view.score_btn_1.text = "Click, NOW"
+                                view.score_btn_1.text = getString(R.string.click)
                                 delay(
                                     TimeUnit.MILLISECONDS.toMillis(
                                         Random.nextLong(

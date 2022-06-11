@@ -37,7 +37,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            tools:text="example@gmail.com" />
+            tools:text="example@gmail.com"
+            android:autofillHints="" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -57,7 +58,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            tools:text="yourBestPassword322" />
+            tools:text="yourBestPassword322"
+            android:autofillHints="" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
