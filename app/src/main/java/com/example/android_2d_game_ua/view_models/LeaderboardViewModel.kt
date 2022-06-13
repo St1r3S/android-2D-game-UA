@@ -21,7 +21,7 @@ class LeaderboardViewModel(private val repository: LeaderboardRepository) : View
                     list.add(elem)
                 }
                 list.sortByDescending { it.score }
-                list.take(10)
+                //list.take(10)
                 leaderBoard.postValue(list)
             }
 
