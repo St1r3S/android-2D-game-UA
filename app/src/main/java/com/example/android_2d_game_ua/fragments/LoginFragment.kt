@@ -54,10 +54,11 @@ class LoginFragment : Fragment() {
                 else -> {
                     val email: String = et_login_email.text.toString().trim { it <= ' ' }
                     val password: String = et_login_password.text.toString().trim { it <= ' ' }
-
+                    var check = false
+                    viewModel.check.removeObservers(viewLifecycleOwner)
                     viewModel.loginUser(email, password)
                     viewModel.check.observe(viewLifecycleOwner) {
-                        if (it) {
+                        if (it == null) {
                             Toast.makeText(
                                 context,
                                 "You were logged in successfully!",
@@ -66,11 +67,14 @@ class LoginFragment : Fragment() {
                             Navigation.findNavController(view)
                                 .navigate(R.id.action_loginFragment_to_menuFragment)
                         } else {
-                            Toast.makeText(
-                                context,
-                                "Something went wrong!",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            if (!check) {
+                                Toast.makeText(
+                                    context,
+                                    it,
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                            check = true
                         }
                     }
                 }

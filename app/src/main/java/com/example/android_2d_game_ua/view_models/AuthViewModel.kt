@@ -6,18 +6,17 @@ import com.google.firebase.auth.FirebaseAuth
 
 class AuthViewModel : ViewModel() {
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-    var check: MutableLiveData<Boolean> = MutableLiveData()
+    var check: MutableLiveData<String> = MutableLiveData()
 
     fun loginUser(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    check.postValue(true)
+                    check.postValue(null)
                 } else {
-                    check.postValue(false)
+                    check.postValue(task.exception!!.message.toString())
                 }
             }
-
     }
 
     fun logoutUser() {

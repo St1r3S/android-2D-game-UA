@@ -17,6 +17,7 @@ import com.example.android_2d_game_ua.view_models.factories.RegistrationViewMode
 import kotlinx.android.synthetic.main.fragment_registration.*
 import kotlinx.android.synthetic.main.fragment_registration.view.*
 
+
 class RegistrationFragment : Fragment() {
     private lateinit var viewModel: RegistrationViewModel
 
@@ -31,11 +32,17 @@ class RegistrationFragment : Fragment() {
         ).get(RegistrationViewModel::class.java)
 
         val view = inflater.inflate(R.layout.fragment_registration, container, false)
+
         view.tv_login.setOnClickListener {
             Navigation.findNavController(view)
                 .navigate(R.id.action_registrationFragment_to_loginFragment)
         }
+
         view.findViewById<Button>(R.id.btn_register).setOnClickListener {
+            val username: String = et_register_username.text.toString().trim { it <= ' ' }
+            val email: String = et_register_email.text.toString().trim { it <= ' ' }
+            val password: String = et_register_password.text.toString().trim { it <= ' ' }
+
             when {
                 TextUtils.isEmpty(et_register_username.text.toString().trim { it <= ' ' }) -> {
                     Toast.makeText(
@@ -59,27 +66,28 @@ class RegistrationFragment : Fragment() {
                     ).show()
                 }
                 else -> {
-                    val username: String = et_register_username.text.toString().trim { it <= ' ' }
-                    val email: String = et_register_email.text.toString().trim { it <= ' ' }
-                    val password: String = et_register_password.text.toString().trim { it <= ' ' }
-
+                    var check = false
+                    viewModel.check.removeObservers(viewLifecycleOwner)
                     viewModel.createUser(username, email, password)
                     viewModel.check.observe(viewLifecycleOwner) {
-                        if (it) {
+                        if (it == null && check) {
+                            viewModel.check.removeObservers(viewLifecycleOwner)
                             Toast.makeText(
                                 context,
                                 "You were registered successfully!",
                                 Toast.LENGTH_SHORT
                             ).show()
-                            Navigation.findNavController(view)
+                            Navigation.findNavController(requireView())
                                 .navigate(R.id.action_registrationFragment_to_menuFragment)
-
                         } else {
-                            Toast.makeText(
-                                context,
-                                "Something went wrong!",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            if (!check) {
+                                Toast.makeText(
+                                    context,
+                                    it,
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                            check = true
                         }
                     }
                 }
@@ -87,4 +95,5 @@ class RegistrationFragment : Fragment() {
         }
         return view
     }
+
 }
