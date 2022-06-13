@@ -16,13 +16,16 @@ class LeaderboardViewModel(private val repository: LeaderboardRepository) : View
         repository.getLeaders().addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (postSnapshot in dataSnapshot.children) {
-                    val elem = LeaderBoardElem(postSnapshot.child("username").value.toString(),
-                        postSnapshot.child("score").value as Long)
+                    val elem = LeaderBoardElem(
+                        postSnapshot.child("username").value.toString(),
+                        postSnapshot.child("score").value as Long
+                    )
                     list.add(elem)
                 }
                 list.sortByDescending { it.score }
-                //list.take(10)
+
                 leaderBoard.postValue(list)
+                //leaderBoard.postValue(list.take(10))
             }
 
             override fun onCancelled(databaseError: DatabaseError) {

@@ -7,7 +7,6 @@ import com.example.android_2d_game_ua.model.user.User
 class ProfileViewModel() : ViewModel() {
 
     var user: MutableLiveData<User> = MutableLiveData()
-    private lateinit var viewModel: MenuViewModel
 
     fun getUser(viewModel: MenuViewModel) {
         user = viewModel.user
