@@ -52,6 +52,7 @@ class GameFragment : Fragment() {
 
             val backgroundColorToWin = ContextCompat.getColor(view.context, R.color.yellow)
             val backgroundColorToLose = ContextCompat.getColor(view.context, R.color.blue)
+
             viewLifecycleOwner.lifecycleScope.launch {
                 var loop = true
                 circleStart.setOnClickListener {
@@ -86,7 +87,6 @@ class GameFragment : Fragment() {
                                         )
                                     )
                                 )
-
                             }
                         }
                         circleCard.setOnClickListener {
@@ -106,11 +106,8 @@ class GameFragment : Fragment() {
                         }
                     }
                 }
-
             }
-
         }
-
         return view
     }
 }
