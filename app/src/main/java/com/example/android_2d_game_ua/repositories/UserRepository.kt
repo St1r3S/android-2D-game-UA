@@ -15,12 +15,12 @@ import com.google.firebase.ktx.Firebase
 
 class UserRepository {
     var auth: FirebaseAuth = Firebase.auth
-    private var userLogedIn: MutableLiveData<Boolean> = MutableLiveData()
+    private var userLoggedIn: MutableLiveData<Boolean> = MutableLiveData()
     private var loginError: MutableLiveData<String?> = MutableLiveData()
     private var liveUserData: MutableLiveData<User> = MutableLiveData()
     init {
         if (auth.currentUser != null) {
-            userLogedIn.postValue(true)
+            userLoggedIn.postValue(true)
             loginError.postValue(null)
         }
     }
@@ -28,8 +28,8 @@ class UserRepository {
     private val database: DatabaseReference =
         Firebase.database("https://android-2d-game-ua-ff466-default-rtdb.europe-west1.firebasedatabase.app/").reference
 
-    fun getLogedIn(): MutableLiveData<Boolean> {
-        return userLogedIn
+    fun getLoggedIn(): MutableLiveData<Boolean> {
+        return userLoggedIn
     }
 
     fun getLoginError(): MutableLiveData<String?> {
@@ -48,7 +48,7 @@ class UserRepository {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    userLogedIn.postValue(true)
+                    userLoggedIn.postValue(true)
                 } else {
                     loginError.postValue(task.exception!!.message.toString())
                 }
@@ -58,7 +58,7 @@ class UserRepository {
     fun registerUser(username: String, email: String, password: String) {
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                userLogedIn.postValue(true)
+                userLoggedIn.postValue(true)
                 val firebaseUser: FirebaseUser = task.result!!.user!!
                 firebaseUser.updateProfile(
                     UserProfileChangeRequest.Builder().setDisplayName(username)

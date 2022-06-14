@@ -5,11 +5,11 @@ import androidx.lifecycle.ViewModel
 import com.example.android_2d_game_ua.repositories.UserRepository
 
 class AuthViewModel(private val repository: UserRepository) : ViewModel() {
-    var userLogedIn: MutableLiveData<Boolean> = MutableLiveData()
+    var userLoggedIn: MutableLiveData<Boolean> = MutableLiveData()
     var loginError: MutableLiveData<String?> = MutableLiveData()
 
     init{
-        userLogedIn = repository.getLogedIn()
+        userLoggedIn = repository.getLoggedIn()
         loginError = repository.getLoginError()
     }
 
