@@ -38,6 +38,28 @@ class RegistrationFragment : Fragment() {
                 .navigate(R.id.action_registrationFragment_to_loginFragment)
         }
 
+        viewModel.userLogedIn.observe(viewLifecycleOwner) {
+            if (it == true) {
+                Toast.makeText(
+                    context,
+                    "You were registered successfully!",
+                    Toast.LENGTH_SHORT
+                ).show()
+                Navigation.findNavController(requireView())
+                    .navigate(R.id.action_registrationFragment_to_menuFragment)
+            }
+        }
+
+        viewModel.loginError.observe(viewLifecycleOwner) {
+            if (it != null) {
+                Toast.makeText(
+                    context,
+                    it,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+
         view.findViewById<Button>(R.id.btn_register).setOnClickListener {
             val username: String = et_register_username.text.toString().trim { it <= ' ' }
             val email: String = et_register_email.text.toString().trim { it <= ' ' }
@@ -66,30 +88,7 @@ class RegistrationFragment : Fragment() {
                     ).show()
                 }
                 else -> {
-                    var check = false
-                    viewModel.check.removeObservers(viewLifecycleOwner)
                     viewModel.createUser(username, email, password)
-                    viewModel.check.observe(viewLifecycleOwner) {
-                        if (it == null && check) {
-                            viewModel.check.removeObservers(viewLifecycleOwner)
-                            Toast.makeText(
-                                context,
-                                "You were registered successfully!",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            Navigation.findNavController(requireView())
-                                .navigate(R.id.action_registrationFragment_to_menuFragment)
-                        } else {
-                            if (!check) {
-                                Toast.makeText(
-                                    context,
-                                    it,
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                            check = true
-                        }
-                    }
                 }
             }
         }

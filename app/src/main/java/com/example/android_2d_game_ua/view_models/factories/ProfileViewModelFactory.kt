@@ -5,11 +5,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.android_2d_game_ua.repositories.UserRepository
 import com.example.android_2d_game_ua.view_models.ProfileViewModel
 
-class ProfileViewModelFactory :
+class ProfileViewModelFactory(private val repository: UserRepository) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
-            ProfileViewModel() as T
+            ProfileViewModel(this.repository) as T
         } else {
             throw IllegalArgumentException("ViewModel Not Found")
         }

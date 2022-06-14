@@ -8,12 +8,13 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.android_2d_game_ua.R
-import com.example.android_2d_game_ua.view_models.AuthViewModel
-import com.example.android_2d_game_ua.view_models.factories.AuthViewModelFactory
+import com.example.android_2d_game_ua.repositories.UserRepository
+import com.example.android_2d_game_ua.view_models.MenuViewModel
+import com.example.android_2d_game_ua.view_models.factories.MenuViewModelFactory
 import kotlinx.android.synthetic.main.fragment_menu.view.*
 
 class MenuFragment : Fragment() {
-    private lateinit var viewModel: AuthViewModel
+    private lateinit var viewModel: MenuViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,8 +22,8 @@ class MenuFragment : Fragment() {
     ): View? {
         viewModel = ViewModelProvider(
             this,
-            AuthViewModelFactory()
-        ).get(AuthViewModel::class.java)
+            MenuViewModelFactory(UserRepository())
+        ).get(MenuViewModel::class.java)
 
         val view = inflater.inflate(R.layout.fragment_menu, container, false)
 
