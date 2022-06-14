@@ -36,7 +36,7 @@ class LoginFragment : Fragment() {
                 .navigate(R.id.action_loginFragment_to_registrationFragment)
         }
 
-        viewModel.userLogedIn.observe(viewLifecycleOwner) {
+        viewModel.userLoggedIn.observe(viewLifecycleOwner) {
             if (it == true) {
                 Toast.makeText(
                     context,
