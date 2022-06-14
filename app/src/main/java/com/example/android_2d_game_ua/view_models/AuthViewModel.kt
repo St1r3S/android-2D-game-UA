@@ -2,24 +2,18 @@ package com.example.android_2d_game_ua.view_models
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.auth.FirebaseAuth
+import com.example.android_2d_game_ua.repositories.UserRepository
 
-class AuthViewModel : ViewModel() {
-    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-    var check: MutableLiveData<String> = MutableLiveData()
+class AuthViewModel(private val repository: UserRepository) : ViewModel() {
+    var userLogedIn: MutableLiveData<Boolean> = MutableLiveData()
+    var loginError: MutableLiveData<String?> = MutableLiveData()
 
-    fun loginUser(email: String, password: String) {
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    check.postValue(null)
-                } else {
-                    check.postValue(task.exception!!.message.toString())
-                }
-            }
+    init{
+        userLogedIn = repository.getLogedIn()
+        loginError = repository.getLoginError()
     }
 
-    fun logoutUser() {
-        auth.signOut()
+    fun loginUser(email: String, password: String){
+        repository.loginUser(email, password)
     }
 }

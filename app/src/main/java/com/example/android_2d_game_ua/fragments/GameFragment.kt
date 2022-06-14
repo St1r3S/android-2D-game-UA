@@ -44,7 +44,7 @@ class GameFragment : Fragment() {
             GameViewModelFactory(UserRepository())
         ).get(GameViewModel::class.java)
 
-        viewModel.getUser(this)
+        viewModel.getUserData()
         viewModel.user.observe(viewLifecycleOwner) {
             view.tv_best_score.text = "${it.score}"
             val currentUserScore = it.score

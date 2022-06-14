@@ -27,7 +27,7 @@ class ProfileFragment : Fragment() {
 
         viewModelProfile = ViewModelProvider(
             this,
-            ProfileViewModelFactory()
+            ProfileViewModelFactory(UserRepository())
         ).get(ProfileViewModel::class.java)
         viewModelMenu = ViewModelProvider(
             this,
@@ -40,8 +40,8 @@ class ProfileFragment : Fragment() {
             Navigation.findNavController(view)
                 .navigate(R.id.action_profileFragment_to_menuFragment)
         }
+        viewModelProfile.getUserData()
 
-        viewModelProfile.getUser(viewModelMenu)
         viewModelProfile.user.observe(viewLifecycleOwner) {
             view.tv_score.text = "${it.score}"
             view.tv_username_id.text = "${it.username}"
